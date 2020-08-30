@@ -141,7 +141,7 @@ const App = () => {
         </div>
         <div>
           <div style={{ fontWeight: 'bold', fontSize: '14px' }}>File 2</div>
-          <input type="file" onChange={(event) => onFileChange2(event)} />
+          <input type="file" onChange={(event) => onFileChange2(event)} disabled={Object.keys(fileA).length === 0}/>
         </div>
       </div>
       <div style={{ paddingBottom: '30px' }}>
