@@ -66,7 +66,7 @@ const App = () => {
       </div>
       <div style={{ paddingBottom: '20px' }}>
         <h2>
-          Multipler Value <span style={{ color: 'red', fontSize: '13px' }}>(numbers/ decimal only)</span>
+          Mark Up Value <span style={{ color: 'red', fontSize: '13px' }}>(numbers/ decimal only)</span>
         </h2>
         <div>
           <label style={{ paddingRight: '10px' }}>
