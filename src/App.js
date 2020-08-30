@@ -4,7 +4,7 @@ import * as FileSaver from 'file-saver';
 
 const App = () => {
 
-  const [prices, setPrices] = useState([1,1,1,1,1,1,1,1,1,1,1,1])
+  const [prices, setPrices] = useState([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1])
 
   const excelReader = (data) => {
     let renderedData = XLSX.read(data, { type: 'binary' });
@@ -19,7 +19,7 @@ const App = () => {
       for (let j = 0; j < dataParse[i].length; j++) {
         if (j != 0 && !isNaN(parseFloat(dataParse[i][j]))) {
           let price = parseFloat(dataParse[i][j])
-          rowData[qInfo[j]] = price * prices[j-1]
+          rowData[qInfo[j]] = price * prices[j - 1]
         }
         else {
           rowData[qInfo[j]] = dataParse[i][j]
@@ -57,14 +57,17 @@ const App = () => {
 
 
   return (
-    <div style={{justifyContent:'center', alignItems:'center', display:'flex', flexDirection:'column'}}>
-      <h3>
+    <div style={{ justifyContent: 'center', alignItems: 'center', display: 'flex', flexDirection: 'column' }}>
+      <h2>
         Upload Excel File Here
-      </h3>
-      <div style={{paddingBottom:'20px'}}>
+      </h2>
+      <div style={{ paddingBottom: '20px' }}>
         <input type="file" onChange={(event) => onFileChange(event)} />
       </div>
       <div>
+        <h2>
+          Multipler Value <span style={{ color: 'red', fontSize: '13px' }}>(numbers/ decimal only)</span>
+        </h2>
         <div>
           <label style={{ paddingRight: '10px' }}>
             Q10
@@ -137,6 +140,10 @@ const App = () => {
           </label>
           <input type="number" onChange={(e) => updateMultiplier(e.target.value, 11)} value={prices[11]} />
         </div>
+      </div>
+      <div>
+        <h3>Your Uploaded File <span style={{ fontWeight: 'bold', color: 'red', fontSize:'20px' }}>MUST</span> follow the following format: </h3>
+        <img src={require('./assets/Format.png')} />
       </div>
     </div>
   );
