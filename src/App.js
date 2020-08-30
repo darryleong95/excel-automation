@@ -57,11 +57,11 @@ const App = () => {
 
 
   return (
-    <div>
+    <div style={{justifyContent:'center', alignItems:'center', display:'flex', flexDirection:'column'}}>
       <h3>
         Upload Excel File Here
       </h3>
-      <div>
+      <div style={{paddingBottom:'20px'}}>
         <input type="file" onChange={(event) => onFileChange(event)} />
       </div>
       <div>
