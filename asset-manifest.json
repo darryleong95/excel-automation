@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/excel-automation/static/css/main.5ecd60fb.chunk.css",
-    "main.js": "/excel-automation/static/js/main.491b9d31.chunk.js",
-    "main.js.map": "/excel-automation/static/js/main.491b9d31.chunk.js.map",
+    "main.js": "/excel-automation/static/js/main.50d338b2.chunk.js",
+    "main.js.map": "/excel-automation/static/js/main.50d338b2.chunk.js.map",
     "runtime-main.js": "/excel-automation/static/js/runtime-main.bbbfcfe6.js",
     "runtime-main.js.map": "/excel-automation/static/js/runtime-main.bbbfcfe6.js.map",
     "static/js/2.1fcc3f4d.chunk.js": "/excel-automation/static/js/2.1fcc3f4d.chunk.js",
     "static/js/2.1fcc3f4d.chunk.js.map": "/excel-automation/static/js/2.1fcc3f4d.chunk.js.map",
     "index.html": "/excel-automation/index.html",
-    "precache-manifest.eafc7aa1f282d2f65e7e91b7677ae096.js": "/excel-automation/precache-manifest.eafc7aa1f282d2f65e7e91b7677ae096.js",
+    "precache-manifest.576a87cc27730f262ca875ee5583eef6.js": "/excel-automation/precache-manifest.576a87cc27730f262ca875ee5583eef6.js",
     "service-worker.js": "/excel-automation/service-worker.js",
     "static/css/main.5ecd60fb.chunk.css.map": "/excel-automation/static/css/main.5ecd60fb.chunk.css.map",
     "static/js/2.1fcc3f4d.chunk.js.LICENSE.txt": "/excel-automation/static/js/2.1fcc3f4d.chunk.js.LICENSE.txt",
-    "static/media/Format.png": "/excel-automation/static/media/Format.337fa5d4.png"
+    "static/media/Format.png": "/excel-automation/static/media/Format.c50dbb84.png"
   },
   "entrypoints": [
     "static/js/runtime-main.bbbfcfe6.js",
     "static/js/2.1fcc3f4d.chunk.js",
     "static/css/main.5ecd60fb.chunk.css",
-    "static/js/main.491b9d31.chunk.js"
+    "static/js/main.50d338b2.chunk.js"
   ]
 }
