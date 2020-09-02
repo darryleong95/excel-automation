@@ -10,14 +10,18 @@ const App = () => {
         <h2>Wiselink Excel Automation</h2>
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
           <ul className="navbar-nav mr-auto">
-            <li><Link to={'/'} className="nav-link">Compile</Link></li>
-            <li><Link to={'/compare'} className="nav-link">Compare</Link></li>
+            {/* <li><Link to={'/'} className="nav-link">Compile</Link></li>
+            <li><Link to={'/compare'} className="nav-link">Compare</Link></li> */}
+            <li><Link to={'/excel-automation'} className="nav-link">Compile</Link></li>
+            <li><Link to={'/excel-automation/compare'} className="nav-link">Compare</Link></li>
           </ul>
         </nav>
         <hr />
         <Switch>
-          <Route exact path='/' component={Compile} />
-          <Route path='/compare' component={Compare} />
+          {/* <Route exact path='/' component={Compile} />
+          <Route path='/compare' component={Compare} /> */}
+          <Route exact path='/excel-automation' component={Compile} />
+          <Route path='/excel-automation/compare' component={Compare} />
         </Switch>
       </div>
     </Router>
