@@ -102,17 +102,22 @@ const Compile = () => {
       }
     }
 
-
     /* Write and Download File */
     let keys = Object.keys(fileA)
     let wbData = []
 
+    let myHeader = ['MPN']
+
+    let pl = fileA[keys[0]]
+    for (let i = 0; i < Object.keys(pl).length; i++) {
+      myHeader.push(Object.keys(pl)[i])
+    }
 
     for (let i = 0; i < keys.length; i++) {
       let rowData = {}
 
       /* Part Name */
-      rowData[titleColumn] = keys[i]
+      rowData['MPN'] = keys[i]
 
       /* Quantity - Prices */
       let priceList = fileA[keys[i]]
@@ -122,13 +127,13 @@ const Compile = () => {
 
       for (let j = 0; j < quantityArr.length; j++) {
         if (!isNaN(parseFloat(priceArr[j]))) {
-          rowData["[" + quantityArr[j].toString() + "]"] = priceArr[j] * q[quantityArr[j]]
+          rowData[quantityArr[j]] = priceArr[j] * q[quantityArr[j]]
         }
       }
       wbData.push(rowData)
     }
 
-    const ws = XLSX.utils.json_to_sheet(wbData)
+    const ws = XLSX.utils.json_to_sheet(wbData, { header: myHeader })
     let wb = { Sheets: { 'data': ws }, SheetNames: ['data'] }
     const excelBuffer = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
     const dd = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8' });
@@ -136,7 +141,6 @@ const Compile = () => {
   }
 
   const updateMultiplier = (mult, value) => {
-    console.log(mult, value)
     let tmp = JSON.parse(JSON.stringify(q))
     if (mult.toString().length === 0) {
       tmp[value] = 1
@@ -145,7 +149,6 @@ const Compile = () => {
       tmp[value] = parseFloat(mult)
       setQs(tmp)
     }
-    console.log(tmp)
   }
 
 

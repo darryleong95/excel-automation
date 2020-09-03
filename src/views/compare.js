@@ -154,10 +154,9 @@ const Compare = () => {
         /* Write and Download File */
         let workbookRows = []
         let mpns = Object.keys(stock)
-
-        let myHeader = ['Line', 'MPN', 'Brand', 'Stock', 'Gr-Curr', 'GR-Price', 'Opo-Curr', 'Opo-Price']
-        for (let item in Object.keys(quantities)) {
-            myHeader.push('[' + item + ']')
+        let myHeader = ['Line', 'MPN', 'Brand', 'Stock', 'Curr (GR)', 'Price (GR)', 'Curr (OPO)', 'Price (OPO)']
+        for (let i = 0; i < Object.keys(quantities); i++) {
+            myHeader.push(Object.keys(quantities)[i])
         }
 
         for (let i = 0; i < mpns.length; i++) {
@@ -167,10 +166,10 @@ const Compare = () => {
             row['MPN'] = mpn
             row['Brand'] = stock[mpn]['brand']
             row['Stock'] = stock[mpn]['qty']
-            row['GR-Curr'] = stock[mpn]['grCurr']
-            row['GR-Price'] = stock[mpn]['grPrice']
-            row['Opo-Curr'] = stock[mpn]['opoCurr']
-            row['Opo-Price'] = stock[mpn]['opoPrice']
+            row['Curr (GR)'] = stock[mpn]['grCurr']
+            row['Price (GR)'] = stock[mpn]['grPrice']
+            row['Curr (OPO)'] = stock[mpn]['opoCurr']
+            row['Price (OPO)'] = stock[mpn]['opoPrice']
 
             let grPriceUSD = stock[mpn]['grPrice'] * exchange[stock[mpn]['grCurr']]
             let opoPriceUSD = stock[mpn]['opoPrice'] * exchange[stock[mpn]['opoCurr']]
@@ -185,15 +184,15 @@ const Compare = () => {
 
                 // Formula: [Unit Price + Unit price x (Mark Up% / 100)+Handling Charges] x QTY Break ]x ForEx / QTY Break
                 let unitPrice = (((1 + markUp * 1.0 / 100) * highestPrice) * quantity + handlingCharge) / quantity
-                row['[' + quantity + ']'] = isNaN(unitPrice) ? '-' : unitPrice
+                row[quantity] = isNaN(unitPrice) ? '-' : unitPrice
             }
             workbookRows.push(row)
         }
 
         console.log(myHeader)
-        const ws = XLSX.utils.json_to_sheet(workbookRows)
+        const ws = XLSX.utils.json_to_sheet(workbookRows, { header: myHeader })
         let wb = { Sheets: { 'data': ws }, SheetNames: ['data'] }
-        const excelBuffer = XLSX.write(wb, { bookType: 'xlsx', type: 'array', header: myHeader });
+        const excelBuffer = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
         const dd = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8' });
         FileSaver.saveAs(dd, 'Data.xlsx');
 
