@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import * as XLSX from 'xlsx';
 import * as FileSaver from 'file-saver';
+import { useStyles } from '../style'
+import { Button, Input } from '@material-ui/core';
 
 const Compile = () => {
 
@@ -9,6 +11,8 @@ const Compile = () => {
 
   const [q, setQs] = useState({})
   const [titleColumn, setTitleColumn] = useState("")
+
+  const classes = useStyles()
 
   const excelReader = (data, isFirstFile) => {
     let renderedData = XLSX.read(data, { type: 'binary' });
@@ -146,46 +150,48 @@ const Compile = () => {
 
 
   return (
-    <div style={{ justifyContent: 'center', alignItems: 'center', display: 'flex', flexDirection: 'column' }}>
-      <h2>
+    <div className={classes.root}>
+      <span className={classes.label} style={{ fontSize: '30px', marginBottom: '30px' }}>
         Upload Excel Files Here
-      </h2>
-      <div style={{ paddingBottom: '20px', display: 'flex', flexDirection: 'row' }}>
-        <div>
-          <div style={{ fontWeight: 'bold', fontSize: '14px' }}>File 1</div>
-          <input type="file" onChange={(event) => onFileChange(event, true)} />
+      </span>
+      <div className={classes.fileUploadContainer} style={{ flexDirection: 'row', width: '40%' }}>
+        <div className={classes.fileUploadWrapper}>
+          <span className={classes.label}>File 1</span>
+          <Input onChange={(event) => onFileChange(event, true)} type="file" className={classes.fileUpload} />
         </div>
-        <div>
-          <div style={{ fontWeight: 'bold', fontSize: '14px' }}>File 2</div>
-          <input type="file" onChange={(event) => onFileChange(event, false)} disabled={Object.keys(fileA).length === 0} />
+        <div className={classes.fileUploadWrapper}>
+          <span className={classes.label}>File 2</span>
+          <Input onChange={(event) => onFileChange(event, false)} type="file" disabled={Object.keys(fileA).length === 0} className={classes.fileUpload} />
         </div>
       </div>
-      <div style={{ paddingBottom: '30px' }}>
-        <h2>
+      <section className={classes.fileUploadContainer}>
+        <span className={classes.label}>
           Mark Up Value <span style={{ color: 'red', fontSize: '13px' }}>(numbers/ decimal only)</span>
-        </h2>
-        {
-          Object.keys(q).map((value) => {
-            return (
-              <div key={value}>
-                <label style={{ paddingRight: '10px' }}>
-                  Q - {value}
-                </label>
-                <input type="number" onChange={(e) => updateMultiplier(e.target.value, value)} value={q[value]} />
-              </div>
-            )
-          })
-        }
+        </span>
+        <div className={Object.keys(q).length !== 0 && classes.inputWrapper}>
+          {
+            Object.keys(q).map((value) => {
+              return (
+                <div key={value} className={classes.input}>
+                  <label style={{ paddingRight: '10px' }}>
+                    Q - {value}
+                  </label>
+                  <input type="number" onChange={(e) => updateMultiplier(e.target.value, value)} value={q[value]} />
+                </div>
+              )
+            })
+          }
+        </div>
         {
           Object.keys(q).length === 0 &&
           <div>
             <h4 style={{ color: "#333333", textTransform: "uppercase" }}>[Multiplier fields will display once file is uploaded]</h4>
           </div>
         }
-        <button onClick={() => downloadFile()} style={{ marginTop: '20px', width: '200px', height: '40px', border: 'none', fontWeight: 'bold' }} disabled={Object.keys(fileA).length === 0}>
+        <button onClick={() => downloadFile()} className={classes.download} disabled={Object.keys(fileA).length === 0}>
           Download
         </button>
-      </div>
+      </section>
       <div style={{ justifyContent: 'center', alignItems: 'center', display: 'flex', flexDirection: 'column' }}>
         <h3>Your Uploaded File <span style={{ fontWeight: 'bold', color: 'red', fontSize: '20px' }}>MUST</span> follow the following format: </h3>
         <img alt="Sample Format" src={require('../assets/Format.png')} width={"80%"} style={{ borderRadius: "10px" }} />

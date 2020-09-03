@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import * as XLSX from 'xlsx';
 import * as FileSaver from 'file-saver';
+import { useStyles } from '../style'
+import { Input } from '@material-ui/core';
 
 const Compare = () => {
+
+    const classes = useStyles()
 
     // initialize defaulr variables
     const [exchange, setExchange] = useState({
@@ -197,26 +201,26 @@ const Compare = () => {
 
 
     return (
-        <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}>
-            <h2>
+        <div className={classes.root}>
+            <span className={classes.label} style={{ fontSize: '30px', marginBottom: '30px' }}>
                 Upload Excel Files Here
-            </h2>
-            <div style={{ width: '50%', paddingBottom: '20px', display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-                <div>
-                    <div style={{ fontWeight: 'bold', fontSize: '16px' }}>Stock Available</div>
-                    <input type="file" onChange={(event) => onFileChange(event, 1)} />
+            </span>
+            <div className={classes.fileUploadContainer} style={{ flexDirection: 'row', width: '60%' }}>
+                <div className={classes.fileUploadWrapper} style={{ width: '30%' }}>
+                    <span className={classes.label}>Stock Available</span>
+                    <Input onChange={(event) => onFileChange(event, 1)} type="file" className={classes.fileUpload} />
                 </div>
-                <div>
-                    <div style={{ fontWeight: 'bold', fontSize: '16px' }}>OpenPoPriceList</div>
-                    <input type="file" onChange={(event) => onFileChange(event, 2)} />
+                <div className={classes.fileUploadWrapper} style={{ width: '30%' }}>
+                    <span className={classes.label}>OpenPoPriceList</span>
+                    <Input onChange={(event) => onFileChange(event, 2)} type="file" className={classes.fileUpload} />
                 </div>
-                <div>
-                    <div style={{ fontWeight: 'bold', fontSize: '16px' }}>GoodsReceivedPriceList</div>
-                    <input type="file" onChange={(event) => onFileChange(event, 3)} />
+                <div className={classes.fileUploadWrapper} style={{ width: '30%' }}>
+                    <span className={classes.label}>GoodsReceivedPriceList</span>
+                    <Input onChange={(event) => onFileChange(event, 3)} type="file" className={classes.fileUpload} />
                 </div>
             </div>
-            <div>
-                <button onClick={() => downloadFile()} style={{ marginTop: '20px', width: '200px', height: '40px', border: 'none', fontWeight: 'bold' }} >
+            <div style={{ marginTop: '50px' }}>
+                <button onClick={() => downloadFile()} className={classes.download}>
                     Download
                 </button>
             </div>
