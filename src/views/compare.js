@@ -189,7 +189,6 @@ const Compare = () => {
             workbookRows.push(row)
         }
 
-        console.log(myHeader)
         const ws = XLSX.utils.json_to_sheet(workbookRows, { header: myHeader })
         let wb = { Sheets: { 'data': ws }, SheetNames: ['data'] }
         const excelBuffer = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
