@@ -24,7 +24,7 @@ const App = () => {
         </Toolbar>
       </AppBar>
       <Switch>
-        <Route exact path='/' component={Compile} />
+        <Route path='/' component={Compile} />
         <Route path='/compare' component={Compare} />
       </Switch>
     </Router>
