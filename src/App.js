@@ -24,7 +24,7 @@ const App = () => {
         </Toolbar>
       </AppBar>
       <Switch>
-        <Route path='/excel-automation' component={Compile} />
+        <Route exact path='/excel-automation' component={Compile} />
         <Route path='/excel-automation/compare' component={Compare} />
       </Switch>
     </Router>
