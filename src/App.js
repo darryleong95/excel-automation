@@ -18,14 +18,14 @@ const App = () => {
           </Typography>
           <div className={classes.grow} />
           <div className={classes.linkContainer}>
-            <Link to={'/excel-automation'} className={classes.link}>Compile</Link>
-            <Link to={'/excel-automation/compare'} className={classes.link}>Compare</Link>
+            <Link to={'/'} className={classes.link}>Compile</Link>
+            <Link to={'/compare'} className={classes.link}>Compare</Link>
           </div>
         </Toolbar>
       </AppBar>
       <Switch>
-        <Route exact path='/excel-automation' component={Compile} />
-        <Route path='/excel-automation/compare' component={Compare} />
+        <Route exact path='/' component={Compile} />
+        <Route path='/compare' component={Compare} />
       </Switch>
     </Router>
   )
