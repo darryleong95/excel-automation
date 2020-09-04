@@ -18,8 +18,8 @@ const App = () => {
           </Typography>
           <div className={classes.grow} />
           <div className={classes.linkContainer}>
-            <Link to={'/'} className={classes.link}>Compile</Link>
-            <Link to={'/compare'} className={classes.link}>Compare</Link>
+            <Link to={'/excel-automation'} className={classes.link}>Compile</Link>
+            <Link to={'/excel-automation/compare'} className={classes.link}>Compare</Link>
           </div>
         </Toolbar>
       </AppBar>
