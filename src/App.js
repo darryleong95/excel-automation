@@ -13,9 +13,7 @@ const App = () => {
     <Router>
       <AppBar position="static" style={{ backgroundColor: 'darkorange' }}>
         <Toolbar>
-          <Typography className={classes.label} noWrap style={{ fontSize: '22px' }}>
-            Wiselink Excel Automation
-          </Typography>
+          <img alt="Sample Format" src={require('./assets/logo.jpg')} width={"10%"} />
           <div className={classes.grow} />
           <div className={classes.linkContainer}>
             <Link to={'/excel-automation'} className={classes.link}>Compile</Link>
